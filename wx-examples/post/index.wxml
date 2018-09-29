@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="page__hd">
+    <view class="page__title">axios.post</view>
+  </view>
+  <view class="weui-cells__title">JSON</view>
+  <view class="weui-cells weui-cells_form">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea"
+                  bindinput="bindinput"
+                  value="{{inputText}}"/>
+      </view>
+    </view>
+  </view>
+  <view class="weui-btn-area">
+    <button class="weui-btn" bindtap="submit">POST</button>
+  </view>
+  <view class="weui-cells__title">{{outputText}}</view>
+</view>

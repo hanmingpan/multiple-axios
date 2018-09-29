@@ -1450,40 +1450,37 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// wx.request
 	var buildURL = __webpack_require__(6);
+	var settle = __webpack_require__(14);
+	var createError = __webpack_require__(15);
 	
 	module.exports = function wxrequestAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
+	    var requestType = 'request'
 	    var finalUrl = buildURL(config.url, config.params, config.paramsSerializer)
-	    var task = wx.request({
+	    var request = {
 	      url: finalUrl,
 	      data: config.data,
 	      header: config.headers,
 	      method: config.method.toUpperCase(),
 	      // dataType: 'json',
 	      // responseType: 'text',
-	      success: function (res) {
-	        var response = {
-	          config: config,
-	          data: res.data,
-	          headers: res.header,
-	          // request: task,
-	          status: res.statusCode,
-	          // statusText: ''
-	        }
+	    }
 	
-	        if (res.statusCode < 400) {
-	          resolve(response)
-	        } else {
-	          reject(response)
-	        }
-	      },
-	      fail: function (err) {
-	        reject(err)
-	      },
-	      complete: function () {
+	    request.success = function (response) {
+	      settle(resolve, reject, {
+	        data: response.data,
+	        status: response.statusCode,
+	        headers: response.header,
+	        config: config,
+	        request: request
+	      })
+	    }
 	
-	      }
-	    })
+	    request.fail = function(error) {
+	      reject(createError(error.errMsg, config))
+	    }
+	
+	    wx[requestType](request)
 	  })
 	}
 

@@ -1,7 +1,8 @@
 {
   "pages":[
     "get/index",
-    "post/index"
+    "post/index",
+    "all/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

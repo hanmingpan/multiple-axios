@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="page__hd">
+    <view class="page__title">axios.all</view>
+  </view>
+  <view class="h3">User</view>
+  <view>
+    <image src="{{user.avatar_url}}"></image>
+    <view>{{user.name}}</view>
+  </view>
+  <view class="h3">Orgs</view>
+  <view wx:for="{{orgs}}" wx:for-item="item">
+    <image src="{{item.avatar_url}}"></image>
+    <view>{{item.login}}</view>
+  </view>
+</view>

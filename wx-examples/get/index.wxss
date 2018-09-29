@@ -1,0 +1,5 @@
+/* get/index.wxss */
+
+.people-item {
+  margin: 20rpx 0;
+}

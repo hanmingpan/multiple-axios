@@ -1,0 +1,19 @@
+/**app.wxss**/
+@import 'lib/weui.wxss';
+
+image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.container {
+  padding: 40rpx;
+}
+
+.page__hd {
+  padding: 40rpx 0;
+}
+
+.page__title {
+  font-size: 30px;
+}

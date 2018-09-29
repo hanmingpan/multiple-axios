@@ -1,0 +1,11 @@
+{
+  "pages":[
+    "get/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "mutiple-axios",
+    "navigationBarTextStyle":"black"
+  }
+}

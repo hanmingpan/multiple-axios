@@ -1,16 +1,17 @@
 {
   "name": "multiple-axios",
-  "version": "0.19.0-beta.1",
+  "version": "0.1.0",
   "description": "Promise based HTTP client for the browser, node.js, wx",
   "main": "index.js",
   "scripts": {
     "test": "grunt test && bundlesize",
     "start": "node ./sandbox/server.js",
-    "build": "NODE_ENV=production grunt build",
+    "build": "./build.sh",
     "preversion": "npm test",
     "version": "npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json",
     "postversion": "git push && git push --tags",
     "examples": "node ./examples/server.js",
+    "wxexamples": "node ./wx-examples/server.js",
     "coveralls": "cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "fix": "eslint --fix lib/**/*.js"
   },
@@ -21,6 +22,7 @@
   "keywords": [
     "xhr",
     "http",
+    "wx.request",
     "ajax",
     "promise",
     "node"

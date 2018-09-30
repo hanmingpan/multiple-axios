@@ -2,7 +2,8 @@
   "pages":[
     "get/index",
     "post/index",
-    "all/index"
+    "all/index",
+    "max/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

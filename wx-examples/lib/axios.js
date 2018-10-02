@@ -1480,7 +1480,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	      reject(createError(error.errMsg, config))
 	    }
 	
-	    wx[requestType](request)
+	    var task = wx[requestType](request)
+	
+	    if (config.cancelToken) {
+	      // Handle cancellation
+	      config.cancelToken.promise.then(function onCanceled(cancel) {
+	        if (!task) {
+	          return;
+	        }
+	
+	        task.abort();
+	        reject(cancel);
+	        // Clean up request
+	        request = null;
+	      });
+	    }
 	  })
 	}
 

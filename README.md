@@ -1,12 +1,17 @@
 # multiple-axios
 
-在axios的基础上，增加小程序的请求方法
+在axios的基础上，增加小程序的请求方法。
 
 ## Features
 
 - base axios@0.19.0-beta.1
-- add adapters/wxrequest.js
-- api方法一致
+- api方法与axios一致
+- 支持浏览器，node，微信小程序
+- 目前仅增加微信小程序request
+
+## case
+
+适合一套代码生成多端复用的场景，例如`mpvue`,`taro`
 
 ## install
 
@@ -38,9 +43,7 @@ axios.get('/user?ID=12345')
   });
 ```
 
-### 不支持的选项
-
-注：由于小程序的请求功能有限, 所以不支持以下选项.
+## 微信小程序不支持的选项
 
 * `timeout`
 * `withCredentials`
@@ -55,6 +58,10 @@ axios.get('/user?ID=12345')
 * `httpsAgent`
 * `proxy`
 
+
+## more
+
+未来还会增加支付宝，百度等小程序，真正实现一库多用。
 
 ## License
 

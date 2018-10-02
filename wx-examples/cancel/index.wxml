@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="page__hd">
+    <view class="page__title">axios.cancel</view>
+  </view>
+  <view wx:if="{{begin}}">request pending</view>
+  <view wx:if="{{cancel}}">request canceled</view>
+</view>

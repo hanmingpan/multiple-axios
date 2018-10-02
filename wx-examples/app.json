@@ -3,7 +3,8 @@
     "get/index",
     "post/index",
     "all/index",
-    "max/index"
+    "max/index",
+    "cancel/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

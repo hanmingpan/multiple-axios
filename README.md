@@ -10,11 +10,11 @@
 - 目前仅增加微信小程序request
 - 暂未加入上传，下载功能
 
-## case
+## Case
 
 适合一套代码生成多端复用的场景，例如`mpvue`,`taro`
 
-## install
+## Install
 
 Using npm:
 
@@ -60,7 +60,7 @@ axios.get('/user?ID=12345')
 * `proxy`
 
 
-## more
+## More
 
 未来还会增加支付宝，百度等小程序，真正实现一库多用。
 

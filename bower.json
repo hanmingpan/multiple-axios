@@ -1,12 +1,12 @@
 {
-  "name": "axios",
+  "name": "multiple-axios",
   "main": "./dist/axios.js",
   "version": "0.19.0-beta.1",
-  "homepage": "https://github.com/axios/axios",
+  "homepage": "https://github.com/hanmingpan/multiple-axios",
   "authors": [
-    "Matt Zabriskie"
+    "TYXP"
   ],
-  "description": "Promise based HTTP client for the browser and node.js",
+  "description": "Promise based HTTP client for the browser, node.js, wx",
   "moduleType": [
     "amd",
     "globals"

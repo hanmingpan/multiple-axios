@@ -1462,10 +1462,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      data: config.data,
 	      header: config.headers,
 	      method: config.method.toUpperCase(),
-	      // dataType: 'json',
-	      // responseType: 'text',
+	      dataType: config.dataType || 'json',
+	      responseType: config.responseType || 'text',
 	    }
-	
+	    
 	    request.success = function (response) {
 	      settle(resolve, reject, {
 	        data: response.data,
@@ -1583,7 +1583,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
 	    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress', 'maxContentLength',
 	    'validateStatus', 'maxRedirects', 'httpAgent', 'httpsAgent', 'cancelToken',
-	    'socketPath'
+	    'socketPath', 'dataType'
 	  ], function defaultToConfig2(prop) {
 	    if (typeof config2[prop] !== 'undefined') {
 	      config[prop] = config2[prop];

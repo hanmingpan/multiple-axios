@@ -4,7 +4,8 @@
     "post/index",
     "all/index",
     "max/index",
-    "cancel/index"
+    "cancel/index",
+    "upload/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

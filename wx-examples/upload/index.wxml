@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="page__hd">
+    <view class="page__title">axios.upload</view>
+  </view>
+  <view>{{message}}</view>
+  <view class="people-item">
+    <button bindtap="upload">上传</button>
+  </view>
+</view>

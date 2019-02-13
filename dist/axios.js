@@ -277,6 +277,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	/**
+	 * Determine if a value is a JSON object
+	 *
+	 * @param {String} val The value to test
+	 * @returns {boolean} True if value is a JSON object, otherwise false
+	 */
+	function isJson(val) {
+	  try {
+	    JSON.parse(val);
+	  } catch (e) {
+	    return false;
+	  }
+	  return true;
+	}
+	
+	/**
 	 * Trim excess whitespace off the beginning and end of a string
 	 *
 	 * @param {String} str The String to trim
@@ -446,6 +461,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  isFunction: isFunction,
 	  isStream: isStream,
 	  isURLSearchParams: isURLSearchParams,
+	  isJson: isJson,
 	  isStandardBrowserEnv: isStandardBrowserEnv,
 	  forEach: forEach,
 	  merge: merge,
@@ -1452,11 +1468,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	var buildURL = __webpack_require__(6);
 	var settle = __webpack_require__(14);
 	var createError = __webpack_require__(15);
+	var utils = __webpack_require__(2);
 	
 	module.exports = function wxrequestAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
-	    var requestType = 'request'
-	    var finalUrl = buildURL(config.url, config.params, config.paramsSerializer)
+	    var requestType = 'request';
+	    var finalUrl = buildURL(config.url, config.params, config.paramsSerializer);
 	    var request = {
 	      url: finalUrl,
 	      data: config.data,
@@ -1464,8 +1481,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	      method: config.method.toUpperCase(),
 	      dataType: config.dataType || 'json',
 	      responseType: config.responseType || 'text',
+	    };
+	
+	    if (config.uploadFile) {
+	      var name = config.uploadFile;
+	      requestType = 'uploadFile';
+	      request.name = name;
+	
+	      if (utils.isJson(config.data)) {
+	        request.filePath = JSON.parse(config.data)[name];
+	        request.formData = JSON.parse(config.data);
+	      }
 	    }
-	    
+	
 	    request.success = function (response) {
 	      settle(resolve, reject, {
 	        data: response.data,
@@ -1474,13 +1502,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        config: config,
 	        request: request
 	      })
-	    }
+	    };
 	
 	    request.fail = function(error) {
 	      reject(createError(error.errMsg, config))
-	    }
+	    };
 	
-	    var task = wx[requestType](request)
+	    var task = wx[requestType](request);
 	
 	    if (config.cancelToken) {
 	      // Handle cancellation
@@ -1583,7 +1611,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
 	    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress', 'maxContentLength',
 	    'validateStatus', 'maxRedirects', 'httpAgent', 'httpsAgent', 'cancelToken',
-	    'socketPath', 'dataType'
+	    'socketPath', 'dataType', 'uploadFile'
 	  ], function defaultToConfig2(prop) {
 	    if (typeof config2[prop] !== 'undefined') {
 	      config[prop] = config2[prop];

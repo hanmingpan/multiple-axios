@@ -1,0 +1,5 @@
+/* get/index.acss */
+
+.people-item {
+  margin: 20rpx 0;
+}

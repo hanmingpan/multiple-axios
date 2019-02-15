@@ -1,0 +1,4 @@
+module.exports = {
+  port: 5000,
+  host: 'http://localhost:5000'
+};

@@ -12,6 +12,7 @@
     "postversion": "git push && git push --tags",
     "examples": "node ./examples/server.js",
     "wxexamples": "node ./wx-examples/server.js",
+    "myexamples": "node ./my-examples/server.js",
     "coveralls": "cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "fix": "eslint --fix lib/**/*.js"
   },

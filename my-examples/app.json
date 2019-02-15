@@ -1,0 +1,8 @@
+{
+  "pages": [
+    "pages/get/index"
+  ],
+  "window": {
+    "defaultTitle": "mutiple-axios"
+  }
+}

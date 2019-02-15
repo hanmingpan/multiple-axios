@@ -3,6 +3,7 @@
         "pages/get/index",
         "pages/post/index",
         "pages/all/index",
+        "pages/max/index",
         "pages/cancel/index"
     ],
     "window": {

@@ -1,10 +1,9 @@
 /**
  * @file index.js
- * @author swan
+ * @author tyxp
  */
-const app = getApp()
-const axios = require('../../lib/axios.js')
-const config = require('../../config')
+var axios = require('../../lib/axios.js')
+var config = require('../../config')
 
 Page({
   data: {

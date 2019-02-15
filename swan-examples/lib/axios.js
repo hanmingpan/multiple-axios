@@ -874,10 +874,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // For browsers use XHR adapter
 	    adapter = __webpack_require__(13);
 	  } else if (typeof wx !== 'undefined') {
-	    adapter = __webpack_require__(20)
+	    // For wx mini program use wx adapter
+	    adapter = __webpack_require__(20);
 	  } else if (typeof swan !== 'undefined') {
 	    // For baidu mini program use swan adapter
-	    adapter = __webpack_require__(21)
+	    adapter = __webpack_require__(21);
 	  }
 	  return adapter;
 	}
@@ -1506,39 +1507,40 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	// swan.request
+	'use strict';
+	
 	var buildURL = __webpack_require__(6);
 	var settle = __webpack_require__(14);
 	var createError = __webpack_require__(15);
 	
 	module.exports = function swanrequestAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
-	    var requestType = 'request'
-	    var finalUrl = buildURL(config.url, config.params, config.paramsSerializer)
+	    var requestType = 'request';
+	    var finalUrl = buildURL(config.url, config.params, config.paramsSerializer);
 	    var request = {
 	      url: finalUrl,
 	      data: config.data,
 	      header: config.headers,
 	      method: config.method.toUpperCase(),
 	      dataType: config.dataType || 'json',
-	      responseType: config.responseType || 'text',
-	    }
+	      responseType: config.responseType || 'text'
+	    };
 	
-	    request.success = function (response) {
+	    request.success = function(response) {
 	      settle(resolve, reject, {
 	        data: response.data,
 	        status: response.statusCode,
 	        headers: response.header,
 	        config: config,
 	        request: request
-	      })
-	    }
+	      });
+	    };
 	
 	    request.fail = function(error) {
-	      reject(createError(error.errMsg, config))
-	    }
+	      reject(createError(error.errMsg, config));
+	    };
 	
-	    var task = swan[requestType](request)
+	    var task = swan[requestType](request);
 	
 	    if (config.cancelToken) {
 	      // Handle cancellation
@@ -1553,8 +1555,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        request = null;
 	      });
 	    }
-	  })
-	}
+	  });
+	};
 
 
 /***/ }),

@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="page__hd">
+    <view class="page__title">axios.get</view>
+  </view>
+  <view class="people-item" s-for="{{people}}">
+    <image src="https://avatars.githubusercontent.com/u/{{item.avatar}}"></image>
+    <view>{{item.name}}</view>
+    <view>Github: https://github.com/{{item.github}}
+    </view>
+    <view>Twitter: https://twitter.com/{{item.twitter}}
+    </view>
+  </view>
+</view>

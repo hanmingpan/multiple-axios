@@ -1234,7 +1234,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  error.response = response;
 	  error.isAxiosError = true;
 	
-	  error.toJSON = function() {
+	  error.toJSON = function toJSON() {
 	    return {
 	      // Standard
 	      message: this.message,
@@ -1452,39 +1452,40 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	// wx.request
+	'use strict';
+	
 	var buildURL = __webpack_require__(6);
 	var settle = __webpack_require__(14);
 	var createError = __webpack_require__(15);
 	
 	module.exports = function wxrequestAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
-	    var requestType = 'request'
-	    var finalUrl = buildURL(config.url, config.params, config.paramsSerializer)
+	    var requestType = 'request';
+	    var finalUrl = buildURL(config.url, config.params, config.paramsSerializer);
 	    var request = {
 	      url: finalUrl,
 	      data: config.data,
 	      header: config.headers,
 	      method: config.method.toUpperCase(),
 	      dataType: config.dataType || 'json',
-	      responseType: config.responseType || 'text',
-	    }
+	      responseType: config.responseType || 'text'
+	    };
 	
-	    request.success = function (response) {
+	    request.success = function success(response) {
 	      settle(resolve, reject, {
 	        data: response.data,
 	        status: response.statusCode,
 	        headers: response.header,
 	        config: config,
 	        request: request
-	      })
-	    }
+	      });
+	    };
 	
-	    request.fail = function(error) {
-	      reject(createError(error.errMsg, config))
-	    }
+	    request.fail = function fail(error) {
+	      reject(createError(error.errMsg, config));
+	    };
 	
-	    var task = wx[requestType](request)
+	    var task = wx[requestType](request);
 	
 	    if (config.cancelToken) {
 	      // Handle cancellation
@@ -1499,8 +1500,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        request = null;
 	      });
 	    }
-	  })
-	}
+	  });
+	};
 
 
 /***/ }),
@@ -1526,7 +1527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      responseType: config.responseType || 'text'
 	    };
 	
-	    request.success = function(response) {
+	    request.success = function success(response) {
 	      settle(resolve, reject, {
 	        data: response.data,
 	        status: response.statusCode,
@@ -1536,7 +1537,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    };
 	
-	    request.fail = function(error) {
+	    request.fail = function fail(error) {
 	      reject(createError(error.errMsg, config));
 	    };
 	

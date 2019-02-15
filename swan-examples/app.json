@@ -2,6 +2,7 @@
     "pages": [
         "pages/get/index",
         "pages/post/index",
+        "pages/all/index",
         "pages/cancel/index"
     ],
     "window": {

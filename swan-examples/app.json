@@ -1,7 +1,8 @@
 {
     "pages": [
         "pages/get/index",
-        "pages/post/index"
+        "pages/post/index",
+        "pages/cancel/index"
     ],
     "window": {
         "navigationBarBackgroundColor": "#ffffff",
